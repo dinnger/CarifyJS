@@ -1,16 +1,49 @@
-# Vue 3 + TypeScript + Vite
+Generated with [vike.dev/new](https://vike.dev/new) ([version 433](https://www.npmjs.com/package/create-vike/v/0.0.433)) using this command:
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+```sh
+npm create vike@latest --- --vue
+```
 
-## Recommended IDE Setup
+## Contents
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+* [`/pages/+config.ts`](#pagesconfigts)
+* [Routing](#routing)
+* [`/pages/_error/+Page.vue`](#pages_errorpagevue)
+* [`/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`](#pagesonpagetransitionstartts-and-pagesonpagetransitionendts)
+* [SSR](#ssr)
+* [HTML Streaming](#html-streaming)
 
-## Type Support For `.vue` Imports in TS
+This app is ready to start. It's powered by [Vike](https://vike.dev) and [Vue](https://vuejs.org/guide/quick-start.html).
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+### `/pages/+config.ts`
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+* A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your [`<Page>` components](https://vike.dev/Page)).
+* A default [`title`](https://vike.dev/title).
+* Global [`<head>` tags](https://vike.dev/head-tags).
+
+### Routing
+
+[Vike's built-in router](https://vike.dev/routing) lets you choose between:
+
+* [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.vue` file is located on the filesystem)
+* [Route Strings](https://vike.dev/route-string)
+* [Route Functions](https://vike.dev/route-function)
+
+### `/pages/_error/+Page.vue`
+
+The [error page](https://vike.dev/error-page) which is rendered when errors occur.
+
+### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
+
+The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with [`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page transition animations.
+
+### SSR
+
+SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for some pages.
+
+### HTML Streaming
+
+You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for some pages while still using it for others.
+

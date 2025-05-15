@@ -1,6 +1,14 @@
-import './style.css'
-import { createApp } from './main'
+import "./style.css";
+import { createApp } from "./main";
 
-const { app } = createApp()
+const { app, router } = createApp();
 
-app.mount('#app')
+// // Si tenemos un estado inicial desde el servidor, lo usamos
+// if (window.__INITIAL_STATE__) {
+// 	pinia.state.value = JSON.parse(window.__INITIAL_STATE__);
+// }
+
+// Esperar a que el router esté listo
+router.isReady().then(() => {
+	app.mount("#app");
+});

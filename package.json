@@ -5,15 +5,18 @@
     "preview": "vike preview"
   },
   "dependencies": {
-    "vike": "^0.4.229",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vue/compiler-sfc": "^3.5.13",
-    "@vue/server-renderer": "^3.5.13",
+    "@tailwindcss/vite": "^4.1.7",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/compiler-sfc": "^3.5.14",
+    "@vue/server-renderer": "^3.5.14",
+    "tailwindcss": "^4.1.7",
     "unplugin-vue-markdown": "^28.3.1",
+    "vike": "^0.4.229",
     "vike-vue": "^0.9.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.14"
   },
   "devDependencies": {
+    "daisyui": "^5.0.35",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
   },

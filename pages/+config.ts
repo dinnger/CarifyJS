@@ -7,7 +7,6 @@ import Layout from "../layouts/LayoutDefault.vue";
 
 export default {
 	// https://vike.dev/Layout
-	Layout,
 
 	// https://vike.dev/head-tags
 	title: "My Vike App",

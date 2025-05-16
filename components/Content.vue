@@ -1,6 +1,6 @@
 <template>
   <div id="page-container">
-    <div id="page-content" style="padding: 20px; padding-bottom: 50px; min-height: 100vh">
+    <div id="page-content">
       <slot />
     </div>
   </div>
@@ -16,9 +16,16 @@ body.page-is-transitioning #page-content {
 </style>
 
 <style scoped>
+#page-container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
 /* Page Transition Animation */
 #page-content {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+  padding: 20px;
+  max-width: 800px;
 }
 </style>

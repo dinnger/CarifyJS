@@ -18,10 +18,19 @@ const isActive = computed(() => {
 
 <style scoped>
 a {
-  padding: 2px 10px;
+  padding: 5px 10px;
   margin-left: -10px;
+  color: #4a5568;
+  transition: color 0.2s ease;
+  display: block;
 }
+
 a.active {
-  background-color: #eee;
+  color: #3182ce;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #3182ce;
 }
 </style>

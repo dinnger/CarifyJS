@@ -1,49 +1,48 @@
-Generated with [vike.dev/new](https://vike.dev/new) ([version 433](https://www.npmjs.com/package/create-vike/v/0.0.433)) using this command:
+# Astro Starter Kit: Basics
 
 ```sh
-npm create vike@latest --- --vue
+npm create astro@latest -- --template basics
 ```
 
-## Contents
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-* [`/pages/+config.ts`](#pagesconfigts)
-* [Routing](#routing)
-* [`/pages/_error/+Page.vue`](#pages_errorpagevue)
-* [`/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`](#pagesonpagetransitionstartts-and-pagesonpagetransitionendts)
-* [SSR](#ssr)
-* [HTML Streaming](#html-streaming)
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-This app is ready to start. It's powered by [Vike](https://vike.dev) and [Vue](https://vuejs.org/guide/quick-start.html).
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
 
-### `/pages/+config.ts`
+## 🚀 Project Structure
 
-Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
+Inside of your Astro project, you'll see the following folders and files:
 
-* A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your [`<Page>` components](https://vike.dev/Page)).
-* A default [`title`](https://vike.dev/title).
-* Global [`<head>` tags](https://vike.dev/head-tags).
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-### Routing
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
+## 🧞 Commands
 
-* [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.vue` file is located on the filesystem)
-* [Route Strings](https://vike.dev/route-string)
-* [Route Functions](https://vike.dev/route-function)
+All commands are run from the root of the project, from a terminal:
 
-### `/pages/_error/+Page.vue`
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-The [error page](https://vike.dev/error-page) which is rendered when errors occur.
+## 👀 Want to learn more?
 
-### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
-
-The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with [`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page transition animations.
-
-### SSR
-
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for some pages.
-
-### HTML Streaming
-
-You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for some pages while still using it for others.
-
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

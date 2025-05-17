@@ -1,5 +1,12 @@
 ---
 import "../styles/global.css";
+import "../plugins/markdown_alert/style.css";
+import ApiSidebar from "../components/ApiSidebar.vue";
+import ApiTestingPanel from "../components/ApiTestingPanel.vue";
+import Logo from "../components/Logo.vue";
+import { listFiles, type IListFiles } from "../server/files";
+
+const listDocs: IListFiles[] = await listFiles();
 ---
 
 <!doctype html>
@@ -11,8 +18,41 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Document360 API</title>
   </head>
-  <body class="min-h-screen">
-    <slot />
+  <body class="h-screen">
+    <div class="flex flex-col h-screen">
+      <!-- Header -->
+      <header
+        class="bg-doc360-purple text-white p-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <Logo />
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="hover:underline">Features</a>
+          <button class="bg-cyan-600 text-black px-4 py-2 rounded"
+            >Sign in</button
+          >
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 border-r overflow-y-auto h-full">
+          <ApiSidebar listDocs={listDocs} />
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto">
+          <slot />
+        </main>
+
+        <!-- API Testing Panel -->
+        <aside class="w-96 border-l overflow-y-auto">
+          <ApiTestingPanel />
+        </aside>
+      </div>
+    </div>
   </body>
 </html>
 
@@ -22,5 +62,21 @@ import "../styles/global.css";
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .bg-doc360-purple {
+    background-color: var(--doc360-purple);
+  }
+
+  .text-doc360-purple {
+    color: var(--doc360-purple);
+  }
+
+  .bg-doc360-light-purple {
+    background-color: var(--doc360-light-purple);
+  }
+
+  .text-doc360-light-purple {
+    color: var(--doc360-light-purple);
   }
 </style>

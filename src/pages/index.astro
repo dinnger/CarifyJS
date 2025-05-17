@@ -1,12 +1,9 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import Document360Layout from "../../components/Document360Layout.vue";
-import ApiDocContent from "../../components/ApiDocContent.vue";
+import ApiDocContent from "../components/ApiDocContent.vue";
 ---
 
 <Layout>
-  <Document360Layout client:load>
-    <ApiDocContent />
-  </Document360Layout>
+  <ApiDocContent />
 </Layout>

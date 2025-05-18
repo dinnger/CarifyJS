@@ -48,9 +48,8 @@ const listDocs: IListFiles[] = await listFiles();
         </main>
 
         <!-- API Testing Panel -->
-        <aside class="w-96 border-l overflow-y-auto">
-          <ApiTestingPanel />
-        </aside>
+
+        <ApiTestingPanel client:only />
       </div>
     </div>
   </body>

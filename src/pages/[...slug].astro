@@ -1,10 +1,9 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import ApiDocContent from "../components/ApiDocContent.vue";
-import { listFiles, type IListFiles } from "../server/files";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
+import ComponentContent from "../components/content.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -19,9 +18,9 @@ const { Content } = await render(post);
 ---
 
 <Layout>
-  <ApiDocContent>
+  <ComponentContent>
     <Content />
-  </ApiDocContent>
+  </ComponentContent>
 </Layout>
 
 <script>
@@ -55,4 +54,82 @@ const { Content } = await render(post);
   if (document.getElementsByClassName("mermaid").length > 0) {
     renderDiagrams(graphs);
   }
+  // data-language
+  const curl = document.querySelectorAll(".markdown-viewer .astro-code");
+  if (curl.length > 0) {
+    for (const code of curl) {
+      const language = code.getAttribute("data-language");
+      if (language === "bash" && code.textContent?.indexOf("curl") !== -1) {
+        // add class relative to the code
+        code.classList.add("relative");
+        // Agregar un botón de copiar al código
+        const button = document.createElement("button");
+        button.classList.add("execute-curl");
+        button.innerHTML = "Ejecutar";
+        button.addEventListener("click", () => {
+          const curlCommand = String(code.textContent)
+            .trim()
+            .replace("CopiarEjecutarcurl", "curl")
+            .replace("Ejecutarcurl", "curl");
+          // Crear un evento personalizado para comunicarse con el ApiTestingPanel
+          const event = new CustomEvent("execute-curl", {
+            detail: {
+              command: curlCommand,
+              language: "Shell",
+            },
+            bubbles: true,
+          });
+          // Disparar el evento para que el ApiTestingPanel lo pueda escuchar
+          document.dispatchEvent(event);
+        });
+        code.prepend(button);
+      }
+    }
+  }
+
+  // copy
+  const listCode = document.querySelectorAll(".markdown-viewer .astro-code");
+  if (listCode.length > 0) {
+    for (const code of listCode) {
+      const language = code.getAttribute("data-language");
+      code.classList.add("relative");
+      // Agregar un botón de copiar al código
+      const button = document.createElement("button");
+      button.classList.add("btn-copy");
+      button.innerHTML = "Copiar";
+      button.addEventListener("click", () => {
+        navigator.clipboard.writeText(String(code.textContent));
+        button.innerHTML = "Copiado!";
+        setTimeout(() => {
+          button.innerHTML = "Copiar";
+        }, 1000);
+      });
+      code.prepend(button);
+    }
+  }
+
+  // Asegurarse de que todos los encabezados tengan IDs
+  function ensureHeadingIds() {
+    // Verificar si hay un hash en la URL y desplazarse a ese elemento
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      // Sanitizar id de url a texto
+      //  ejemplo d-otros-proveedores-de-alojamiento-est%C3%A1tico => d-otros-proveedores-de-alojamiento-estatico
+      const sanitizedId = decodeURIComponent(id).replace(/%20/g, " ");
+      const element = document.getElementById(sanitizedId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 100);
+      }
+    }
+  }
+
+  // Ejecutar después de que el contenido se haya cargado
+  document.addEventListener("DOMContentLoaded", ensureHeadingIds);
+  // También ejecutar después de una pequeña demora para asegurarse de que todo está renderizado
+  setTimeout(ensureHeadingIds, 500);
 </script>

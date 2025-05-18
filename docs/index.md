@@ -6,6 +6,8 @@ title: ClarifyJS
 
 ClarifyJS es un generador de sitios de documentación moderno construido sobre Astro. Está diseñado para ser rápido, flexible y fácil de usar, similar a Docusaurus pero aprovechando las últimas tecnologías web.
 
+## Contents
+
 ## ¿Por qué ClarifyJS?
 
 - Rendimiento: Construido con Astro, ClarifyJS ofrece sitios web increíblemente rápidos por defecto.
@@ -14,7 +16,7 @@ ClarifyJS es un generador de sitios de documentación moderno construido sobre A
 - Basado en Markdown: Escribe tu documentación en Markdown, un formato simple y ampliamente utilizado.
 
 > [!NOTE]  
-> Diagrama de flujo
+> Diagrama de flujo 😊
 
 ```mermaid
 flowchart LR
@@ -23,6 +25,21 @@ flowchart LR
     test --> B
     A --> test
     test --> C[Finalizar]
+```
+
+## ejemplo de curl
+
+```bash title="Token"
+curl --request GET \
+  --url https://test/api/v1/token \
+  --body '{"username": "{{User.username}}", "password": "{{User.password}}"}'
+
+```
+
+```bash title="CURL"
+curl --request GET \
+  --url https://test/api/v1/teams/{{Team.id}} \
+  --header 'api_token: {{Token.token}}'
 ```
 
 ## ¿Qué es ClarifyJS?

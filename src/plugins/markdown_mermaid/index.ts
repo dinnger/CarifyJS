@@ -35,7 +35,7 @@ export const mermaid: Plugin<[Option?], Root> = () => {
 			// @ts-ignore
 			node.type = "html";
 			node.value = `
-      <div class="mermaid" data-content="${escapeHtml(node.value)}">
+      <div class="astro-code github-dark mermaid" data-content="${escapeHtml(node.value)}">
         <p>Loading graph...</p>
       </div>
     `;

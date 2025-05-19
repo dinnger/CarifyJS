@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+	--doc360-purple: #7a2dd8;
+	--doc360-light-purple: #9b4fe9;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}

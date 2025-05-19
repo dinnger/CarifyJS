@@ -32,14 +32,33 @@ flowchart LR
 ```bash title="Token"
 curl --request GET \
   --url https://test/api/v1/token \
-  --body '{"username": "{{User.username}}", "password": "{{User.password}}"}'
+  --data '{"username": "{{User.username}}", "password": "{{User.password}}"}'
 
 ```
 
 ```bash title="CURL"
-curl --request GET \
-  --url https://test/api/v1/teams/{{Team.id}} \
-  --header 'api_token: {{Token.token}}'
+curl -X 'GET' 'https://dummyjson.com/users/2' -H 'accept: application/json' \
+-H 'Authorization: Bearer {{Token.token}}'\
+| jq '.["company"]'
+```
+
+```bash title="CURL2"
+curl --location --request PUT  'https://jira.atlassian.net/rest/api/3/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic d3JvbnF1aWxsb2RlQHRpZ28uY29tLmd0OkFUQVRUM3hGZkdGMElLekN0bkkyV0FtTFlpcFV5NGc5elhrQ1ZHWjYxV3BmSHJNRDVVOXNsWlVPdHNiNENvNUJ2UzRpY2xFZ25GTElWNzc2R1dFb0kzXzBmcFQ2ZGN0U3JrUVphcjJYaUNEYVdvbkdLQUY0bnB0M2VwaUstb1lHZVMwUkZPQ0lJdXdHUUR3dE1aeG1lVzJVUXM0RGhLRmpqUFk0ZGMweDJUMnJ6eGVoUDhoLTVmUT1EQjk1M0ZBRg==' \
+--data '{
+    "jql":"assignee=currentuser()",
+    "expand": [
+    "names",
+    "schema",
+    "operations"
+  ],
+  "fields": [
+    "summary",
+    "status",
+    "assignee"
+  ]
+}'
 ```
 
 ## ¿Qué es ClarifyJS?

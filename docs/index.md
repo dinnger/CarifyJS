@@ -20,11 +20,11 @@ ClarifyJS es un generador de sitios de documentación moderno construido sobre A
 
 ```mermaid
 flowchart LR
-    A[Input] --> B[Neuron]
-    B --> C[Output]
-    test --> B
-    A --> test
-    test --> C[Finalizar]
+    A[SAP] --> B[Hermes]
+    B --> C[Logistika]
+    C --> D[Base de Datos]
+    D --> C
+    C --> E[ELK]
 ```
 
 ## ejemplo de curl

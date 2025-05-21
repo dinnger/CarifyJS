@@ -1,20 +1,11 @@
-<template>
-  <div class="p-4">
-    <div class="pb-4">
-      <h3 class="text-sm font-medium text-gray-500 uppercase">Filter</h3>
-    </div>
-    <SidebarContent :listDocs="listDocs" />
-  </div>
-</template>
-
-<script setup lang="ts">
+---
+const { listDocs, folderInstance } = Astro.props;
 import SidebarContent, {
   type ISidebarFields,
   type ISidebarListFiles,
 } from "./sidebarContent.vue";
 
-const props = defineProps(["listDocs", "folderInstance"]);
-const listDocs: ISidebarListFiles = buildTree(props.listDocs);
+const lDocs: ISidebarListFiles = buildTree(listDocs);
 
 function buildTree(items: ISidebarFields[]): ISidebarListFiles {
   const tree: ISidebarListFiles = { __files__: [] };
@@ -25,7 +16,7 @@ function buildTree(items: ISidebarFields[]): ISidebarListFiles {
     for (let folderName of item.folder.index) {
       folder.push(folderName);
       // name
-      const existFolder = props.folderInstance[folder.join("/")];
+      const existFolder = folderInstance[folder.join("/")];
       if (existFolder) {
         folderName = `${existFolder.name}::${folder.join("/")}`;
       }
@@ -41,4 +32,11 @@ function buildTree(items: ISidebarFields[]): ISidebarListFiles {
   }
   return tree;
 }
-</script>
+---
+
+<div class="p-4">
+  <div class="pb-4">
+    <h3 class="text-sm font-medium text-gray-500 uppercase">Filter</h3>
+  </div>
+  <SidebarContent listDocs={lDocs} />
+</div>

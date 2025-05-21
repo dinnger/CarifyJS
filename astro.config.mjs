@@ -14,7 +14,15 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	markdown: {
-		remarkPlugins: [[remarkToc, { heading: "contents"} ],remarkAlert, mermaid, remarkCodeTitle],
+		remarkPlugins: [
+			[remarkToc, { heading: "contents" }],
+			remarkAlert,
+			mermaid,
+			remarkCodeTitle,
+		],
 	},
 	integrations: [vue()],
+	redirects: {
+		"/": "/index",
+	},
 });

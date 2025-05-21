@@ -7,7 +7,24 @@ import ComponentContent from "../components/content.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const arrPosts: any[] = posts;
+
+  for (const post of posts) {
+    const arrSlug = post.id.split("/");
+    if (arrSlug.length === 0) continue;
+    const slugString: string[] = [];
+    for (const slug of arrSlug) {
+      slugString.push(slug);
+      if (arrPosts.find((p) => p.id === slugString.join("/"))) continue;
+      arrPosts.push({
+        id: slugString.join("/"),
+        post: null,
+      });
+    }
+  }
+
+  return arrPosts.map((post) => ({
     params: { slug: post.id },
     props: { post },
   }));
@@ -18,7 +35,7 @@ const { Content } = await render(post);
 ---
 
 <Layout>
-  <ComponentContent>
+  <ComponentContent isBody={!!post.body}>
     <Content />
   </ComponentContent>
 </Layout>

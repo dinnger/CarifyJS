@@ -4,9 +4,49 @@ import "../plugins/markdown_alert/style.css";
 import ApiSidebar from "../components/ApiSidebar.vue";
 import ApiTestingPanel from "../components/ApiTestingPanel.vue";
 import Logo from "../components/Logo.vue";
-import { listFiles, type IListFiles } from "../server/files";
+import { getCollection } from "astro:content";
 
-const listDocs: IListFiles[] = await listFiles();
+const folderInstance: { [key: string]: { index: string[]; name: string } } = {};
+const posts = await getCollection("blog");
+let listDocs = posts.map((post) => {
+  const folder = structuredClone(post.id).split("/");
+  const name = folder.pop();
+  if (!folderInstance[folder.join("/")]) {
+    folderInstance[folder.join("/")] = {
+      index: folder || [],
+      name: folder.slice(-1)[0],
+    };
+  }
+  return {
+    name: post.data?.title || name,
+    index: post.id,
+    folder: folder.join("/"),
+    level: folder.length,
+  };
+});
+listDocs.sort((a, b) => {
+  if (a.level !== b.level) {
+    return a.level - b.level;
+  }
+  return a.index.localeCompare(b.index);
+});
+
+const arrFolders = listDocs.map((m) => m.folder);
+// Standarizar
+for (const folder of listDocs.filter((f) => arrFolders.includes(f.index))) {
+  const folderInstanceData = folderInstance[folder.index];
+  if (folderInstanceData) {
+    folderInstance[folder.index] = {
+      index: folder.index.split("/"),
+      name: folder.name,
+    };
+  }
+}
+listDocs = listDocs.filter((f) => !arrFolders.includes(f.index));
+for (const list of listDocs) {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  list.folder = folderInstance[list.folder] as any;
+}
 ---
 
 <!doctype html>
@@ -39,7 +79,7 @@ const listDocs: IListFiles[] = await listFiles();
       <div class="flex flex-1 overflow-hidden">
         <!-- Sidebar -->
         <aside class="w-64 border-r overflow-y-auto h-full">
-          <ApiSidebar listDocs={listDocs} />
+          <ApiSidebar listDocs={listDocs} folderInstance={folderInstance} />
         </aside>
 
         <!-- Main Content Area -->

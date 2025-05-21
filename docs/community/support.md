@@ -1,3 +1,7 @@
+---
+title: "Soporte y Comunidad"
+---
+
 # Soporte y Comunidad
 
 Aquí encontrarás información sobre cómo obtener ayuda con ClarifyJS y cómo conectarte con la comunidad.
@@ -43,6 +47,6 @@ Conéctate con otros usuarios y desarrolladores de ClarifyJS:
 
 ## Contribuir
 
-Si estás interesado en contribuir al proyecto (¡lo cual incluye ayudar a otros!), consulta nuestra [guía de contribución](./contributing.md).
+Si estás interesado en contribuir al proyecto (¡lo cual incluye ayudar a otros!), consulta nuestra [guía de contribución](./test/contributing.md).
 
 Creemos que una comunidad fuerte es vital para el éxito de cualquier proyecto de código abierto. ¡Esperamos verte participando!

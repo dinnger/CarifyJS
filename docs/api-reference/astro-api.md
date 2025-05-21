@@ -1,3 +1,7 @@
+---
+title: "Referencia de la API de Astro"
+---
+
 # Referencia de la API de Astro (Relevante para ClarifyJS)
 
 ClarifyJS está construido sobre Astro, por lo que entender las APIs clave de Astro es crucial para personalizar y extender tu documentación. Esta no es una referencia exhaustiva de la API de Astro, sino una guía de las partes más relevantes cuando se trabaja con un sistema de documentación como ClarifyJS.

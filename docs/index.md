@@ -14,6 +14,7 @@ ClarifyJS es un generador de sitios de documentación moderno construido sobre A
 - Experiencia de Desarrollador: Disfruta de la simplicidad y el poder de Astro y su ecosistema.
 - Personalizable: Adapta fácilmente la apariencia y funcionalidad a tus necesidades.
 - Basado en Markdown: Escribe tu documentación en Markdown, un formato simple y ampliamente utilizado.
+- Markdown: Escribe tu documentación en Markdown, un formato simple y ampliamente utilizado.
 
 > [!NOTE]  
 > Diagrama de flujo 😊
